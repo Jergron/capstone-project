@@ -1,0 +1,116 @@
+{
+  "fans": [
+    {
+      "name":"",
+      "email": "",
+      "imageUrl":"",
+      "city":"",
+      "state": "",
+      "about":"",
+      "topScore": "",
+      "rating": "",
+      "interests":{
+         "hobby1": "",
+         "hobby2": "",
+         "hobby3": ""
+      },
+      "bands": {
+        "bandId":"",
+        "bandId":""
+      },
+      "uid":""
+    },
+    {
+      "name":"",
+      "email": "",
+      "bands":{
+        "bandId":"",
+        "bandId":""
+      },
+      "uid":""
+    }
+  ],
+  "bands": [
+    {
+      "name":"Rusty Shipp",
+      "email": "",
+      "imageUrl":"",
+      "city":"",
+      "state": "",
+      "bio":"",
+      "fans":{
+        "fanId": "",
+        "fanId": ""
+      },
+      "uid":"",
+      "news": ""
+    },
+    {
+      "name":"Caydence",
+      "email": "",
+      "imageUrl":"",
+      "city":"",
+      "state": "",
+      "bio":"",
+      "fans":{
+        "fanId": "",
+        "fanId": ""
+      },
+      "uid":"",
+      "news": ""
+    }
+     
+  ],
+  "merchandise": [
+    {
+      "bandId":"",
+      "gear": [
+        {
+          "price":"",
+          "item":"",
+          "url":""
+        }
+      ],
+      "album":[
+        {
+          "title":"",
+          "year":"",
+          "purchaseUrl":""
+        }
+      ],
+      "fanPurchases":[
+        {
+          "fanId":"",
+          "items": {
+            "gearId":""
+          }
+        }
+      ]
+    }
+  ],
+  "shows": [
+    {
+      "bandId":"",
+      "date":"",
+      "price": "",
+      "venue": "",
+      "totalTickets": "",
+      "purchaseTicketUrl": "" 
+    }
+  ],
+  "feedback": [
+    {
+      "text": "",
+      "bandId":"",
+      "fanId":""
+    }
+  ],
+  "swag": [
+    {
+      "songTitle": "",
+      "bandId":"",
+      "fanId":"",
+      "message": "Congratulations! You have swag."
+    }
+  ] 
+}
