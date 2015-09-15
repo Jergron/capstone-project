@@ -6,6 +6,10 @@ app.config(['$routeProvider',
       .when('/', {
         templateUrl: 'partials/login.html',
         controller: 'LogCtrl'
+      }) 
+      .when('/signup', {
+        templateUrl: 'partials/signUp.html',
+        controller: 'SignUpCtrl'
       })
       // .when('/bandlog', {
       //   templateUrl: 'partials/bandlog.html',

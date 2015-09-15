@@ -10,11 +10,6 @@ app.controller("LogCtrl",
     $scope.band = $firebaseArray(refBands);
     $scope.fan = $firebaseArray(refFans);
 
-    $scope.user = {
-      "email": "",
-      "password": ""
-    };
-
 
     //Radio button selected loads the page with fans data for authentication
     $scope.auth2 = function () {
@@ -46,7 +41,7 @@ app.controller("LogCtrl",
             }
           });
       };  
-    }
+    };
 
     //Radio button selected loads the page with bands data for authentication
     $scope.auth1 = function () {
@@ -78,9 +73,9 @@ app.controller("LogCtrl",
 
             }
           });
-      };
-    
-    }
+      };  
+    };
+
 
   }
 ]);
