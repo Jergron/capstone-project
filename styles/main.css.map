@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,IAAK;EACH,gBAAgB,EAAG,EAAE;;AAGvB,yBAA0B;EACxB,KAAK,EAAE,IAAI;EACX,KAAK,EAAE,KAAK;;AAEd,yBAA0B;EACxB,KAAK,EAAE,KAAK;;AAKd,YAAa;EACX,MAAM,EAAE,GAAG;EACX,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAI;EACjB,aAAa,EAAE,GAAG;EAClB,OAAO,EAAE,GAAG;EACZ,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,eAAe;EACvB,aAAa,EAAE,GAAG",
+"sources": ["../sass/main.scss"],
 "names": [],
 "file": "main.css"
 }

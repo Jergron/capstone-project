@@ -1,13 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
-  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <meta charset="utf-8">
   <title>Capstone Project for Nashville Software School</title>
 </head>
 
-<body>
-  <script></script>
+<body ng-app="capstone">
+  <div ng-controller="LogCtrl">
+    
+    <div ng-view></div>
+  </div>
+
+  <script src="lib/bower_components/jquery/dist/jquery.js"></script>
+  <script src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="lib/bower_components/angular/angular.js"></script>
+  <script src="lib/bower_components/angular-route/angular-route.js"></script>
+  <script src="lib/bower_components/firebase/firebase.js"></script>
+  <script src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
+
+  <script src="app/app.js"></script>
+  <script src="app/controllers/LogCtrl.js"></script>
 </body>
 </html>
