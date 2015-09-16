@@ -11,6 +11,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/signUp.html',
         controller: 'SignUpCtrl'
       })
+      .when('/fanpro', {
+        templateUrl: 'partials/fanprofile.html',
+        controller: 'FanProCtrl'
+      })
       // .when('/bandlog', {
       //   templateUrl: 'partials/bandlog.html',
       //   controller: 'LogBandCtrl'

@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/flick/jquery-ui.css" />
   <link rel="stylesheet" type="text/css" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <meta charset="utf-8">
   <title>Capstone Project for Nashville Software School</title>
 </head>
 
 <body ng-app="capstone">
+
   <div ng-controller="LogCtrl">
     
     <div ng-view></div>
@@ -21,7 +23,12 @@
   <script src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
 
   <script src="app/app.js"></script>
+  
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script src="app/controllers/LogCtrl.js"></script>
   <script src="app/controllers/SignUpCtrl.js"></script>
+  <script src="app/controllers/FanProCtrl.js"></script>
+  <script src="app/directives/onChange.js"></script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+<div ng-controller="FanProCtrl" class="container">
+  
+  <nav ng-show="authData" class="navbar">
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="#">Scoreboard</a></li>
+      <li role="presentation"><a href="#">Band Info</a></li>
+      <li role="presentation"><a href="#">Game</a></li>
+      <div id="userDisplay">
+        <h4>{{ authData.facebook.displayName }}</h4>
+      </div>
+      <a href="#/"  class="btn btn-warning btn-xs" ng-click="auth.$unauth()">Logout</a>
+        <p>Top Score: </p>
+    </ul>
+
+
+  </nav>
+
+  <div class="userUpload">
+    <div class="userMid">
+      <img id="profileImage" ng-src="{{authData.facebook.profileImageURL}}">
+      <br>
+      <input type="checkbox"> Message Me
+      <br>
+      <button class="btn btn-default btn-sm"><strong>Update Profile</strong></button>
+    </div>
+    <div class="userInput">
+      Change Name: <input type="text" placeholder="Name">
+      <br>
+      Change E-mail: <input type="text" placeholder="E-mail">
+       <br>
+      <form action="" method="post" name="form_citydetails" id="form_citydetails" enctype="multipart/form-data" onsubmit="return false;">
+        Change City:  <input class="ff_elem" type="text" name="ff_nm_from[]" value="" id="f_elem_city"/>
+      </form>
+      <br>
+      Change State: <input type="text" id="geobytesregion" size="30" value="">
+      <br>
+      <br>
+      Change Profile Image: <input type="file" on-change="previewFile"><br>
+      <img id="preview" ng-src="{{previewFile()}}" height="100" alt="Click here for preview...">
+    </div>
+  </div>
+
+</div>

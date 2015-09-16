@@ -35,7 +35,6 @@ app.controller("LogCtrl",
               // console.log("Login Failed!", error);
             } else {
 
-              storage.setUserId(authData.uid);
               console.log("Authenticated successfully with payload:", authData);
 
             }
@@ -68,7 +67,6 @@ app.controller("LogCtrl",
               // console.log("Login Failed!", error);
             } else {
 
-              storage.setUserId(authData.uid);
               console.log("Authenticated successfully with payload:", authData);
 
             }
