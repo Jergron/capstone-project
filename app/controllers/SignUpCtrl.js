@@ -7,26 +7,27 @@ app.controller("SignUpCtrl",
 
     // Grabs user input from DOM
     $scope.user = {
-      "email": "",
-      "password": ""
+      email: "",
+      password: "",
+      type: ""
     };
 
       // Adds new user to firebase authentication via email/password
-      $scope.createUser = function(user) {
+      $scope.createUser = function() {
 
-        console.log("user", user);
+        // console.log("user", user);
 
-        if (user.val === "band") {
-          $scope.createBand(user);
+        if ($scope.user.type === "band") {
+          $scope.createBand();
         }
 
-        if (user.val === "fan") {
-          $scope.createFan(user);
+        if ($scope.user.type === "fan") {
+          $scope.createFan();
         }
       }; 
 
       // Adds specifically a new band to firebase authentication via email/password
-      $scope.createBand = function (user) {
+      $scope.createBand = function () {
         ref = new Firebase("https://testcap.firebaseio.com/bands");
         var newUser = {
           "name":"",
@@ -70,31 +71,24 @@ app.controller("SignUpCtrl",
           }
         });
       };
+
+      
       
       // Adds specifically a new fan to firebase authentication via email/password
-      $scope.createFan = function (user) {
-        ref = new Firebase("https://testcap.firebaseio.com/fans");
-        var newUser = {
-          "name":"",
-          "email": "",
-          "imageUrl":"",
-          "city":"",
-          "state": "",
-          "about":"",
-          "topScore": "",
-          "rating": "",
-          "interests":{
-             "hobby": ""
-          },
-          "bands": {
-            "bandId":""
-          }
-        };
+      $scope.createFan = function () {
+        var id;
 
-        console.log("ref", ref);
+        ref = new Firebase("https://testcap.firebaseio.com/fans");
+        
+        // console.log("this my shiney new id:", newChildRef.key());
+
 
         console.log("createFan RUNNING");
-        ref.createUser($scope.user, function(error, userData) {
+
+        ref.createUser({
+          email: $scope.user.email,
+          password: $scope.user.password
+        }, function(error, userData) {
           if (error) {
             switch (error.code) {
               case "EMAIL_TAKEN":
@@ -108,18 +102,34 @@ app.controller("SignUpCtrl",
             }
           } else {
             alert("Successfully created user account with uid:", userData.uid);
-
-            var list = $firebaseArray(ref);
-            list.$add(newUser).then(function(ref) {
-            var id = ref.key();
-            console.log("added record with id " + id);
-            list.$indexFor(id); // returns location in the array
-            });
+            var fanReference = ref.child(userData.uid);
+            fanReference.set(
+              {
+                "name":"",
+                "email": $scope.user.email,
+                "imageUrl":"",
+                "city":"",
+                "state": "",
+                "about":"",
+                "topScore": "",
+                "rating": "",
+                "interests":"",
+                "uid": userData.uid
+              }
+            );
+            console.log("userData.uid", userData.uid);
+            // var list = $firebaseArray(ref);
+            // list.$add(newUser).then(function(ref) {
+            // id = ref.key();
+            // console.log("added record with id " + id);
+            // list.$indexFor(id); // returns location in the array
+            // });           
+            
           }
         });
        
-  
       };
+ 
 
   }
 ]);

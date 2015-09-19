@@ -4,10 +4,15 @@ app.controller("FanProCtrl",
   "$firebaseArray",
   "$firebaseObject",
   "$firebaseAuth",
-  function($scope, $routeParams, $firebaseArray, $firebaseObject, $firebaseAuth) {
+  "$firebase",
+  function($scope, $routeParams, $firebaseArray, $firebaseObject, $firebaseAuth, $firebase) {
     var refFans = new Firebase("https://testcap.firebaseio.com/fans");
+    var authData = refFans.getAuth();
+    $scope.userDetails = {};
+    console.log("authData", authData);
 
-    $scope.fan = $firebaseObject(refFans);
+    $scope.fans = $firebaseObject(refFans);
+    // $scope.fan = $firebaseObject(refFans.child($routeParams.fanId));
 
     //Authenticates user to firebase data
     $scope.auth = $firebaseAuth(refFans);
@@ -15,10 +20,11 @@ app.controller("FanProCtrl",
     // Any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-      console.log("authData", authData);
+      // console.log("authData", authData);
     });
 
     $scope.previewFile = function(){
+
        var preview = document.querySelector('#preview'); //selects the query id
        var file    = document.querySelector('input[type=file]').files[0]; //sames as here
        var reader  = new FileReader();
@@ -32,13 +38,11 @@ app.controller("FanProCtrl",
        } else {
            preview.src = "";
        }
-  };
+    };
 
-  $scope.previewFile();  
+    $scope.previewFile();  
 
-  $(function () 
-
-    {
+    $(function () {
       $("#f_elem_city").autocomplete({
         source: function (request, response) {
           $.getJSON(
@@ -65,40 +69,54 @@ app.controller("FanProCtrl",
       $("#f_elem_city").autocomplete("option", "delay", 100);
     });
 
-  function getcitydetails(fqcn) {
-
-    fqcn = $("#f_elem_city").val();
-
-    cityfqcn = fqcn;
-
-    if (cityfqcn) {
-
-      $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
-        function (data) {
-          $("#geobytesinternet").val(data.geobytesinternet);
-          $("#geobytescountry").val(data.geobytescountry);
-          $("#geobytesregionlocationcode").val(data.geobytesregionlocationcode);
-          $("#geobytesregion").val(data.geobytesregion);
-          $("#geobyteslocationcode").val(data.geobyteslocationcode);
-          $("#geobytescity").val(data.geobytescity);
-          $("#geobytescityid").val(data.geobytescityid);
-          $("#geobytesfqcn").val(data.geobytesfqcn);
-          $("#geobyteslatitude").val(data.geobyteslatitude);
-          $("#geobyteslongitude").val(data.geobyteslongitude);
-          $("#geobytescapital").val(data.geobytescapital);
-          $("#geobytestimezone").val(data.geobytestimezone);
-          $("#geobytesnationalitysingular").val(data.geobytesnationalitysingular);
-          $("#geobytespopulation").val(data.geobytespopulation);
-          $("#geobytesnationalityplural").val(data.geobytesnationalityplural);
-          $("#geobytesmapreference").val(data.geobytesmapreference);
-          $("#geobytescurrency").val(data.geobytescurrency);
-          $("#geobytescurrencycode").val(data.geobytescurrencycode);
-        }
-      );
-    }
-  }
-
-
+    function getcitydetails(fqcn) {
   
+
+      fqcn = $("#f_elem_city").val();
+      console.log("fqcn", fqcn);
+
+      cityfqcn = fqcn;
+
+      if (cityfqcn) {
+
+        $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
+          function (data) {
+            
+            console.log("data", data);
+            $("#geobytesregionlocationcode").val(data.geobytesregionlocationcode);
+            $("#geobytesregion").val(data.geobytesregion);
+            console.log("#geobytesreqionlocationcode", $("#geobytesregionlocationcode").val(data.geobytesregionlocationcode));
+            $scope.userDetails.city = data.geobytescity;
+            $scope.userDetails.state = data.geobytesregion;
+          }
+        );
+      }
+      
+    }
+  
+  
+    $scope.updateUser = function () {
+      var baseRef = new Firebase("https://testcap.firebaseio.com/fans");
+      var authInfo = baseRef.getAuth();
+      var fbId = authInfo.uid; 
+      console.log("fbId", fbId);
+      
+      var dataRef = new Firebase("https://testcap.firebaseio.com/fans/" + fbId);
+      var fans = $firebaseObject(dataRef);  
+      fans.$bindTo($scope, "userDetails", function() {
+        console.log("dataRef", $scope.userDetails);
+      });
+      console.log('fans', fans);
+      console.log('dataRef', dataRef);
+
+
+      // $scope.ID.$save(newUser).then(function() {
+      //   alert('Profile saved!');
+      // }).catch(function(error) {
+      //   alert('Error!');
+      // });
+      // console.log("refFans.child()", refFans.child());
+    };
+    $scope.updateUser();
   }
 ]);

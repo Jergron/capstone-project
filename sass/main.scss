@@ -15,13 +15,22 @@ form > div:nth-of-type(2) {
 }
 
 #userDisplay {
-  display: inline-flex;
+  text-align: center;
 }
 
 .userMid {
   text-align: center;
 }
+.userInput {
+  border: 2px dotted red;
+}
+.userUpload {
+  border: 2px solid black;
+}
 
+.aboutInt{
+
+}
 
 .loginScreen {
   margin: 5em;

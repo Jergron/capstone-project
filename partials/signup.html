@@ -4,11 +4,11 @@
 
   <form action="">
         <div>
-          <input type="radio" name="profiles" ng-model="user.val"  value = "fan"> <strong>Fan</strong>
+          <input type="radio" name="profiles" ng-model="user.type"  value = "fan"> <strong>Fan</strong>
         </div>
          - or -
         <div>
-          <input type="radio" name="profiles" ng-model="user.val"   value = "band"> <strong>Band?</strong>
+          <input type="radio" name="profiles" ng-model="user.type"   value = "band"> <strong>Band?</strong>
         </div>
       </form>
     <div class="panel-body">
@@ -26,7 +26,7 @@
 
         <p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
 
-        <a  type="submit" ng-click="createUser(user)" class="btn btn-block btn-primary">Sign up</a>
+        <a  type="submit" ng-click="createUser()" class="btn btn-block btn-primary">Sign up</a>
         <br/>
         
         <p>{{message}}</p>
