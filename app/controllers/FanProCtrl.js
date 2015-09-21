@@ -3,20 +3,22 @@ app.controller("FanProCtrl",
    "$routeParams",
   "$firebaseArray",
   "$firebaseObject",
-  "$firebaseAuth",
+  "Auth",
   "$firebase",
   "$http",
-  function($scope, $routeParams, $firebaseArray, $firebaseObject, $firebaseAuth, $firebase, $http) {
+  "currentAuth",
+  function($scope, $routeParams, $firebaseArray, $firebaseObject, Auth, $firebase, $http, currentAuth) {
     var refFans = new Firebase("https://testcap.firebaseio.com/fans");
     var authData = refFans.getAuth();
     $scope.userDetails = {};
     console.log("authData", authData);
 
+
     $scope.fans = $firebaseObject(refFans);
     // $scope.fan = $firebaseObject(refFans.child($routeParams.fanId));
 
     //Authenticates user to firebase data
-    $scope.auth = $firebaseAuth(refFans);
+    $scope.auth = Auth;
 
     // Any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
@@ -120,6 +122,6 @@ app.controller("FanProCtrl",
       // });
       // console.log("refFans.child()", refFans.child());
     };
-   $scope.updateUser();
+   
   }
 ]);

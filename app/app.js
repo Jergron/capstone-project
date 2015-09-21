@@ -1,5 +1,13 @@
 var app = angular.module("capstone", ['ngRoute', 'firebase']);
-
+app.run(["$rootScope", "$location", function($rootScope, $location) {
+  $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+    // We can catch the error thrown when the $requireAuth promise is rejected
+    // and redirect the user back to the home page
+    if (error === "AUTH_REQUIRED") {
+      $location.path("/");
+    }
+  });
+}]);
 
 app.config(['$routeProvider',
   function($routeProvider) {
@@ -16,17 +24,19 @@ app.config(['$routeProvider',
       })
       .when('/fanpro', {
         templateUrl: 'partials/fanprofile.html',
-        controller: 'FanProCtrl'
+        controller: 'FanProCtrl',
+        resolve: {
+          // controller will not be loaded until $requireAuth resolves
+          // Auth refers to our $firebaseAuth wrapper in the example above
+          "currentAuth": ["Auth", function(Auth) {
+            // $requireAuth returns a promise so the resolve waits for it to complete
+            // If the promise is rejected, it will throw a $stateChangeError (see above)
+            
+            return Auth.$waitForAuth();
+          }]
+        }
         
       })
-      // .when('/bandlog', {
-      //   templateUrl: 'partials/bandlog.html',
-      //   controller: 'LogBandCtrl'
-      // })
-      // .when('/fanlog', {
-      //   templateUrl: 'partials/fanlog.html',
-      //   controller: 'LogFanCtrl'
-      // })
       .otherwise({
         redirectTo: '/'
       });
