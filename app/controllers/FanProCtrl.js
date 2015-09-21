@@ -5,7 +5,8 @@ app.controller("FanProCtrl",
   "$firebaseObject",
   "$firebaseAuth",
   "$firebase",
-  function($scope, $routeParams, $firebaseArray, $firebaseObject, $firebaseAuth, $firebase) {
+  "$http",
+  function($scope, $routeParams, $firebaseArray, $firebaseObject, $firebaseAuth, $firebase, $http) {
     var refFans = new Firebase("https://testcap.firebaseio.com/fans");
     var authData = refFans.getAuth();
     $scope.userDetails = {};
@@ -79,7 +80,7 @@ app.controller("FanProCtrl",
 
       if (cityfqcn) {
 
-        $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
+        $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn).then(
           function (data) {
             
             console.log("data", data);
@@ -88,6 +89,7 @@ app.controller("FanProCtrl",
             console.log("#geobytesreqionlocationcode", $("#geobytesregionlocationcode").val(data.geobytesregionlocationcode));
             $scope.userDetails.city = data.geobytescity;
             $scope.userDetails.state = data.geobytesregion;
+    
           }
         );
       }
@@ -98,14 +100,15 @@ app.controller("FanProCtrl",
     $scope.updateUser = function () {
       var baseRef = new Firebase("https://testcap.firebaseio.com/fans");
       var authInfo = baseRef.getAuth();
-      var fbId = authInfo.uid; 
-      console.log("fbId", fbId);
-      
+      var fbId = authInfo.uid;
+
       var dataRef = new Firebase("https://testcap.firebaseio.com/fans/" + fbId);
       var fans = $firebaseObject(dataRef);  
+
       fans.$bindTo($scope, "userDetails", function() {
-        console.log("dataRef", $scope.userDetails);
+
       });
+
       console.log('fans', fans);
       console.log('dataRef', dataRef);
 
@@ -117,6 +120,6 @@ app.controller("FanProCtrl",
       // });
       // console.log("refFans.child()", refFans.child());
     };
-    $scope.updateUser();
+   $scope.updateUser();
   }
 ]);
