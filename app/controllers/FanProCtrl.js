@@ -11,11 +11,8 @@ app.controller("FanProCtrl",
     var refFans = new Firebase("https://testcap.firebaseio.com/fans");
     var authData = refFans.getAuth();
     $scope.userDetails = {};
-    console.log("authData", authData);
-
-
     $scope.fans = $firebaseObject(refFans);
-    // $scope.fan = $firebaseObject(refFans.child($routeParams.fanId));
+
 
     //Authenticates user to firebase data
     $scope.auth = Auth;
@@ -23,7 +20,9 @@ app.controller("FanProCtrl",
     // Any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-      // console.log("authData", authData);
+
+      // Populates the DOM with data from firebase
+      $scope.updateUser();
     });
 
     $scope.previewFile = function(){
@@ -111,16 +110,6 @@ app.controller("FanProCtrl",
 
       });
 
-      console.log('fans', fans);
-      console.log('dataRef', dataRef);
-
-
-      // $scope.ID.$save(newUser).then(function() {
-      //   alert('Profile saved!');
-      // }).catch(function(error) {
-      //   alert('Error!');
-      // });
-      // console.log("refFans.child()", refFans.child());
     };
    
   }
