@@ -2,9 +2,9 @@ app.controller("LogCtrl",
   ["$scope",
   "$location",
    "$routeParams",
-   "Auth",
+   "$firebaseAuth",
   "$firebaseArray",
-  function($scope, $location, $routeParams, Auth, $firebaseArray) {
+  function($scope, $location, $routeParams, $firebaseAuth, $firebaseArray) {
     var refBands = new Firebase("https://testcap.firebaseio.com/bands");
     var refFans = new Firebase("https://testcap.firebaseio.com/fans");
     $scope.band = $firebaseArray(refBands);
@@ -14,10 +14,12 @@ app.controller("LogCtrl",
     //Radio button selected loads the page with fans data for authentication
     $scope.auth2 = function () {
       console.log("$scope.auth2");
+      // Authenticates user to firebase data
+      $scope.auth = $firebaseAuth(refFans);
 
       console.log("$scope.auth", $scope.auth);
       // Any time auth status updates, add the user data to scope
-      Auth.$onAuth(function(authData) {
+      $scope.auth.$onAuth(function(authData) {
         
         console.log("authData", authData);
 
@@ -32,7 +34,7 @@ app.controller("LogCtrl",
               $location.path('#/');
               // console.log("Login Failed!", error);
             } else {
-              
+
               console.log("Authenticated successfully with payload:", authData);
 
             }
