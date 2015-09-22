@@ -42,11 +42,11 @@
     </div>
 
     <div class="col-sm-4 userMid">
-      <img id="profileImage" ng-src="{{authData.facebook.profileImageURL}}">
+      <img id="profileImage" ng-src="{{authData.password.profileImageURL}}">
       <br>
       <input type="checkbox"> Message Me
       <br>
-      <a ng-click="updateUser()" class="btn btn-default btn-sm"><strong>Update Profile</strong></a>
+      <a ng-click="updateUser(); message()" class="btn btn-default btn-sm"><strong>Update Profile</strong></a>
     </div>
 
     <div class="col-sm-4 aboutInt">

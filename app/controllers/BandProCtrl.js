@@ -8,10 +8,10 @@ app.controller("BandProCtrl",
   "$http",
   "currentAuth",
   function($scope, $routeParams, $firebaseArray, $firebaseObject, Auth, $firebase, $http, currentAuth) {
-    var refbands = new Firebase("https://testcap.firebaseio.com/bands");
-    var authData = refbands.getAuth();
+    var ref = new Firebase("https://testcap.firebaseio.com/users");
+    var authData = ref.getAuth();
     $scope.userDetails = {};
-    $scope.bands = $firebaseObject(refbands);
+    $scope.bands = $firebaseObject(ref);
 
 
     //Authenticates user to firebase data
@@ -97,19 +97,22 @@ app.controller("BandProCtrl",
       
     }
   
-  
     $scope.updateUser = function () {
-      var baseRef = new Firebase("https://testcap.firebaseio.com/bands");
+      var baseRef = new Firebase("https://testcap.firebaseio.com/users");
       var authInfo = baseRef.getAuth();
       var fbId = authInfo.uid;
 
-      var dataRef = new Firebase("https://testcap.firebaseio.com/bands/" + fbId);
+      var dataRef = new Firebase("https://testcap.firebaseio.com/users/" + fbId);
       var bands = $firebaseObject(dataRef);  
 
       bands.$bindTo($scope, "userDetails", function() {
 
       });
-      
+
+    };
+    
+    $scope.message = function () {
+      alert("Your profile has been saved");
     };
    
   }

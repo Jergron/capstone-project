@@ -8,10 +8,10 @@ app.controller("FanProCtrl",
   "$http",
   "currentAuth",
   function($scope, $routeParams, $firebaseArray, $firebaseObject, Auth, $firebase, $http, currentAuth) {
-    var refFans = new Firebase("https://testcap.firebaseio.com/fans");
-    var authData = refFans.getAuth();
+    var ref = new Firebase("https://testcap.firebaseio.com/users");
+    var authData = ref.getAuth();
     $scope.userDetails = {};
-    $scope.fans = $firebaseObject(refFans);
+    $scope.fans = $firebaseObject(ref);
 
 
     //Authenticates user to firebase data
@@ -99,17 +99,21 @@ app.controller("FanProCtrl",
   
   
     $scope.updateUser = function () {
-      var baseRef = new Firebase("https://testcap.firebaseio.com/fans");
+      var baseRef = new Firebase("https://testcap.firebaseio.com/users");
       var authInfo = baseRef.getAuth();
       var fbId = authInfo.uid;
 
-      var dataRef = new Firebase("https://testcap.firebaseio.com/fans/" + fbId);
+      var dataRef = new Firebase("https://testcap.firebaseio.com/users/" + fbId);
       var fans = $firebaseObject(dataRef);  
 
       fans.$bindTo($scope, "userDetails", function() {
 
       });
 
+    };
+    
+    $scope.message = function () {
+      alert("Your profile has been saved");
     };
    
   }

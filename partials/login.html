@@ -3,18 +3,9 @@
   <div ng-hide="authData">
     <div class="loginScreen" lass="container">
 
-      <h2> App Name</h2>
+      <h2>App Name</h2>
       <p> <strong>Welcome!</strong> Please log into your App Name account with either of the following:</p>
-      <form action="">
-        <div>
-          <input type="radio" ng-click="auth2()" ng-model="profiles" value="fanpro"> <strong>Fan</strong>
-        </div>
-         - or -
-        <div>
-          <input type="radio" ng-click="auth1()" ng-model="profiles" value="bandpro"> <strong>Band?</strong>
-        </div>
-      </form>
-      
+  
       <section> 
         <form name="loginForm" novalidate>
 
@@ -38,7 +29,7 @@
 
         </form>
         </br>
-        <a  href="#/{{profiles}}" ng-click="login()" class="btn btn-md btn-default"> Login </a>
+        <a ng-click="login()" class="btn btn-md btn-default"> Login </a>
         <a href="#/signup" class="btn btn-md btn-success"> Sign Up </a>
       </section>
 

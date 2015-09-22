@@ -3,7 +3,7 @@ app.controller("SignUpCtrl",
    "$routeParams",
   "$firebaseArray",
   function($scope, $routeParams, $firebaseArray) {
-    var ref;
+    var ref = new Firebase("https://testcap.firebaseio.com/users");
 
     // Grabs user input from DOM
     $scope.user = {
@@ -28,7 +28,6 @@ app.controller("SignUpCtrl",
 
       // Adds specifically a new band to firebase authentication via email/password
       $scope.createBand = function () {
-        ref = new Firebase("https://testcap.firebaseio.com/bands");
 
         console.log("createBand RUNNING");
         console.log("ref", ref);
@@ -37,8 +36,7 @@ app.controller("SignUpCtrl",
           email: $scope.user.email,
           password: $scope.user.password
         }, function(error, userData) {
-          
-          alert("error", error);
+
           if (error) {
             switch (error.code) {
               case "EMAIL_TAKEN":
@@ -55,14 +53,8 @@ app.controller("SignUpCtrl",
             var bandReference = ref.child(userData.uid);
             bandReference.set(
             {
-              "name":"",
-              "userName": "",
               "email": $scope.user.email,
-              "imageUrl":"",
-              "city":"",
-              "state": "",
-              "bio":"",
-              "news": "",
+              "band": true,
               "uid": userData.uid
             });
 
@@ -75,7 +67,7 @@ app.controller("SignUpCtrl",
       // Adds specifically a new fan to firebase authentication via email/password
       $scope.createFan = function () {
 
-        ref = new Firebase("https://testcap.firebaseio.com/fans");
+        
         
         // console.log("this my shiney new id:", newChildRef.key());
 
@@ -102,15 +94,8 @@ app.controller("SignUpCtrl",
             var fanReference = ref.child(userData.uid);
             fanReference.set(
               {
-                "name":"",
                 "email": $scope.user.email,
-                "imageUrl":"",
-                "city":"",
-                "state": "",
-                "about":"",
-                "topScore": "",
-                "rating": "",
-                "interests":"",
+                "band": false,
                 "uid": userData.uid
               }
             );
