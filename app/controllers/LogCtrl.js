@@ -9,6 +9,7 @@ app.controller("LogCtrl",
     var refFans = new Firebase("https://testcap.firebaseio.com/fans");
     $scope.band = $firebaseArray(refBands);
     $scope.fan = $firebaseArray(refFans);
+    $scope.profiles = "";
 
 
     //Radio button selected loads the page with fans data for authentication

@@ -15,7 +15,7 @@ app.controller("SignUpCtrl",
       // Adds new user to firebase authentication via email/password
       $scope.createUser = function() {
 
-        // console.log("user", user);
+        console.log("user type", $scope.user.type);
 
         if ($scope.user.type === "band") {
           $scope.createBand();
@@ -29,25 +29,16 @@ app.controller("SignUpCtrl",
       // Adds specifically a new band to firebase authentication via email/password
       $scope.createBand = function () {
         ref = new Firebase("https://testcap.firebaseio.com/bands");
-        var newUser = {
-          "name":"",
-          "userName": user.email,
-          "email": "",
-          "imageUrl":"",
-          "city":"",
-          "state": "",
-          "bio":"",
-          "fans":{
-            "fanId": ""
-          },
-          "news": ""
-        };
-
-        console.log("ref", ref);
-        console.log("newUser", newUser);
 
         console.log("createBand RUNNING");
-        ref.createUser($scope.user, function(error, userData) {
+        console.log("ref", ref);
+
+        ref.createUser({
+          email: $scope.user.email,
+          password: $scope.user.password
+        }, function(error, userData) {
+          
+          alert("error", error);
           if (error) {
             switch (error.code) {
               case "EMAIL_TAKEN":
@@ -61,13 +52,20 @@ app.controller("SignUpCtrl",
             }
           } else {
             alert("Successfully created user account with uid:", userData.uid);
-
-            var list = $firebaseArray(ref);
-            list.$add(newUser).then(function(ref) {
-            var id = ref.key();
-            console.log("added record with id " + id);
-            list.$indexFor(id); // returns location in the array
+            var bandReference = ref.child(userData.uid);
+            bandReference.set(
+            {
+              "name":"",
+              "userName": "",
+              "email": $scope.user.email,
+              "imageUrl":"",
+              "city":"",
+              "state": "",
+              "bio":"",
+              "news": "",
+              "uid": userData.uid
             });
+
           }
         });
       };
@@ -76,7 +74,6 @@ app.controller("SignUpCtrl",
       
       // Adds specifically a new fan to firebase authentication via email/password
       $scope.createFan = function () {
-        var id;
 
         ref = new Firebase("https://testcap.firebaseio.com/fans");
         
@@ -117,13 +114,7 @@ app.controller("SignUpCtrl",
                 "uid": userData.uid
               }
             );
-            console.log("userData.uid", userData.uid);
-            // var list = $firebaseArray(ref);
-            // list.$add(newUser).then(function(ref) {
-            // id = ref.key();
-            // console.log("added record with id " + id);
-            // list.$indexFor(id); // returns location in the array
-            // });           
+            console.log("userData.uid", userData.uid);          
             
           }
         });

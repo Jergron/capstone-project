@@ -1,45 +1,47 @@
 
 <div class="container">
-  
   <div ng-hide="authData">
     <div class="loginScreen" lass="container">
+
       <h2> App Name</h2>
       <p> <strong>Welcome!</strong> Please log into your App Name account with either of the following:</p>
       <form action="">
         <div>
-          <input ng-click="auth2()" type="radio" name="profiles"  value = "fan"> <strong>Fan</strong>
+          <input type="radio" ng-click="auth2()" ng-model="profiles" value="fanpro"> <strong>Fan</strong>
         </div>
          - or -
         <div>
-          <input ng-click="auth1()" type="radio" name="profiles"  value = "band"> <strong>Band?</strong>
+          <input type="radio" ng-click="auth1()" ng-model="profiles" value="bandpro"> <strong>Band?</strong>
         </div>
       </form>
       
-        <section> 
-          <form name="loginForm" novalidate>
-            <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
-              <input server-error class="form-control input-lg" type="text" name="email" ng-model="user.email" placeholder="Email" required autofocus>
-              <span class="ion-at form-control-feedback"></span>
-              <div class="help-block" ng-if="loginForm.email.$dirty" ng-messages="loginForm.email.$error">
-                <div ng-message="required">Please enter your email</div>
-                <div ng-message="server">{{errorMessage.email}}</div>
-              </div>
-            </div>
+      <section> 
+        <form name="loginForm" novalidate>
 
-            <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
-              <input server-error class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
-              <span class="ion-key form-control-feedback"></span>
-              <div class="help-block" ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
-                <div ng-message="required">Please enter your password</div>
-                <div ng-message="server">{{errorMessage.password}}</div>
-              </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
+            <input server-error class="form-control input-lg" type="text" name="email" ng-model="user.email" placeholder="Email" required autofocus>
+            <span class="ion-at form-control-feedback"></span>
+            <div class="help-block" ng-if="loginForm.email.$dirty" ng-messages="loginForm.email.$error">
+              <div ng-message="required">Please enter your email</div>
+              <div ng-message="server">{{errorMessage.email}}</div>
             </div>
-          </form>
-          </br>
-          <a href="#/fanpro" ng-click="login(); updateUser()" class="btn btn-md btn-default"> Login </a>
-          <a href="#/signup" class="btn btn-md btn-success"> Sign Up </a>
-        </section>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
+            <input server-error class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block" ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
+              <div ng-message="required">Please enter your password</div>
+              <div ng-message="server">{{errorMessage.password}}</div>
+            </div>
+          </div>
+
+        </form>
+        </br>
+        <a  href="#/{{profiles}}" ng-click="login()" class="btn btn-md btn-default"> Login </a>
+        <a href="#/signup" class="btn btn-md btn-success"> Sign Up </a>
+      </section>
+
     </div>
   </div>
-
 </div>

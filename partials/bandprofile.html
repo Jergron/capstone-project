@@ -3,9 +3,8 @@
   <nav ng-show="authData" class="navbar">
 
     <div id="userDisplay">
-      <h4>{{ authData.facebook.displayName }}{{userDetails.name}}</h4>
-      <p>Top Score: </p>
-    <a href="#/fanpro" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
+      <h4>{{userDetails.name}}</h4>
+    <a href="#/bandpro" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
       <ul class="dropdown-menu">
         <li role="presentation"><a href="#">Scoreboard</a></li>
         <li role="presentation"><a href="#">Band Info</a></li>
@@ -23,7 +22,7 @@
   <div class="userUpload row">
 
     <div class=" col-sm-4 userInput">
-      Change Name: <input ng-model="userDetails.name" type="text" placeholder="Name">
+      Change Band Name: <input ng-model="userDetails.name" type="text" placeholder="Band Name">
       <br>
       Change E-mail: <input ng-model="userDetails.email" type="text" placeholder="E-mail">
 
@@ -42,19 +41,15 @@
     </div>
 
     <div class="col-sm-4 userMid">
-      <img id="profileImage" ng-src="{{authData.facebook.profileImageURL}}">
-      <br>
-      <input type="checkbox"> Message Me
+      <img id="profileImage" ng-src="{{userDetails.ImageURL}}">
       <br>
       <a ng-click="updateUser()" class="btn btn-default btn-sm"><strong>Update Profile</strong></a>
     </div>
 
     <div class="col-sm-4 aboutInt">
-      <p>About</p>
-      <textarea ng-model="userDetails.about" class="about"></textarea>
-      <p>Interests</p>
-      <textarea ng-model="userDetails.interests" class="interests"></textarea>
-      <!-- <input type="text" placeholder="Interests"> -->
+      <p>Bio</p>
+      <textarea style="width:100%" ng-model="userDetails.bio" class="bio"></textarea>
+
     </div>
 
   </div>
@@ -62,8 +57,10 @@
   <div class="userUpload row">
 
     <div class=" col-sm-4 userInput">
-      <p>Feedback:</p>
-      <textarea ng-model="userDetails.feedback" class="feedback"></textarea>
+      <p>Feedback from fans:</p>
+      <section>
+        
+      </section>
 
     </div>
 
@@ -87,17 +84,5 @@
     </div>
 
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
