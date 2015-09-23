@@ -11,7 +11,7 @@ app.controller("BandProCtrl",
     var ref = new Firebase("https://testcap.firebaseio.com/users");
     var authData = ref.getAuth();
     $scope.userDetails = {};
-    $scope.bands = $firebaseObject(ref);
+    $scope.users = $firebaseObject(ref);
 
 
     //Authenticates user to firebase data
@@ -103,9 +103,9 @@ app.controller("BandProCtrl",
       var fbId = authInfo.uid;
 
       var dataRef = new Firebase("https://testcap.firebaseio.com/users/" + fbId);
-      var bands = $firebaseObject(dataRef);  
+      var users = $firebaseObject(dataRef);  
 
-      bands.$bindTo($scope, "userDetails", function() {
+      users.$bindTo($scope, "userDetails", function() {
 
       });
 

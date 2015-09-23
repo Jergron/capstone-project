@@ -58,9 +58,9 @@
 
     <div class=" col-sm-4 userInput">
       <p>Feedback from fans:</p>
-      <section>
-        
-      </section>
+      <div ng-repeat="user in users">
+        <p ng-if="userDetails.uid === user.bandId">{{user.feedback}}</p>
+      </div>
 
     </div>
 
@@ -80,7 +80,7 @@
     </div>
 
     <div class="col-sm-4 aboutInt" id="cal">
-      <iframe src="https://www.google.com/calendar/embed?src=jeremygrondahl%40gmail.com&ctz=America/Chicago" style="border: 2" width="500" height="300" frameborder="0" scrolling="no"></iframe>
+    
     </div>
 
   </div>
