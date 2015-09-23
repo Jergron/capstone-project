@@ -28,10 +28,10 @@
 
 
 
-      <form  novalidate method="post" name="form_citydetails" id="form_citydetails" enctype="multipart/form-data" onsubmit="return false;">
-        Change City:  <input placeholder="City" class="ff_elem" type="text" name="ff_nm_from[]" value="" id="f_elem_city" ng-model="userDetails.city"/>
+      <form>
+        Change City:  <input placeholder="City" type="text" ng-model="userDetails.city"/>
         <br>
-        Change State: <input ng-model="userDetails.state" placeholder="State" type="text" id="geobytesregion" value="">
+        Change State: <input ng-model="userDetails.state" placeholder="State" type="text">
       </form>
 
 
@@ -59,7 +59,7 @@
     <div class=" col-sm-4 userInput">
       <p>Feedback from fans:</p>
       <div ng-repeat="user in users">
-        <p ng-if="userDetails.uid === user.bandId">{{user.feedback}}</p>
+        <p ng-if="userDetails.uid === user.bandId && users.uid === user.fanId"><strong>{{user.name}}</strong> says: {{user.feedback}}</p>
       </div>
 
     </div>
