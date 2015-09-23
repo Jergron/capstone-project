@@ -47,8 +47,17 @@
     </div>
 
     <div class="col-sm-4 aboutInt">
-      <p>Bio</p>
+      <label>Bio</label>
       <textarea style="width:100%" ng-model="userDetails.bio" class="bio"></textarea>
+      <label for="exampleInput">Add Event:</label>
+      <form name="myForm">
+        <!-- <input type="datetime-local" id="exampleInput" name="input" ng-model="eventDetails.value" required /> -->
+        <input ng-model="eventDetails.times" type="text" id="datepicker">
+        <div role="alert">
+        </div>
+        <br>
+        <input type="text" ng-model="eventDetails.venue" placeholder="Name of the Venue">
+      </form>
 
     </div>
 
@@ -80,7 +89,7 @@
     </div>
 
     <div class="col-sm-4 aboutInt" id="cal">
-    
+      
     </div>
 
   </div>
