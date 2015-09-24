@@ -1,25 +1,29 @@
-<div ng-controller="SignUpCtrl" class="container">
+<div ng-controller="SignUpCtrl" class="container-fluid">
 
   <div class="center-form panel">
-
-  <form action="">
-        <div>
-          <input type="radio" name="profiles" ng-model="user.type"  value = "fan"> <strong>Fan</strong>
-        </div>
-         - or -
-        <div>
-          <input type="radio" name="profiles" ng-model="user.type"   value = "band"> <strong>Band?</strong>
-        </div>
-      </form>
+    <h4 style="text-align: center">Are you a ...</h4>
+    <form class="radio" action="">
+      <div>
+        <input type="radio" name="profiles" ng-model="user.type"  value = "fan"> <strong>Fan?</strong>
+      </div>
+      <div>
+        <input type="radio" name="profiles" ng-model="user.type"   value = "band"> <strong>Band?</strong>
+      </div>
+    </form>
     <div class="panel-body">
-      <h4 class="text-center"><i class="ion-person-add"></i> Sign up</h4>
+      <h4 class="text-center"><i class="ion-person-add"></i></h4>
       <form method="post" ng-submit="createUser" name="signupForm">
-        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
           <input class="form-control input-lg" type="text" id="email" name="email" ng-model="user.email" placeholder="Email" required>
           <span class="ion-at form-control-feedback"></span>
         </div>
 
-        <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  form-group has-feedback" ng-class="{ 'has-error' : signupForm.zip.$invalid && signupForm.zip.$dirty }">
+          <input class="form-control input-lg" type="text" pattern="^\d{5,6}(?:[-\s]\d{4})?$" id="zip" name="zip" ng-model="user.zip" placeholder="Enter Zip" required>
+          <span class="ion-at form-control-feedback"></span>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
           <input class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
           <span class="ion-key form-control-feedback"></span>
         </div>

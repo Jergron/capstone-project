@@ -9,6 +9,7 @@ app.controller("SignUpCtrl",
     $scope.user = {
       email: "",
       password: "",
+      zip: "",
       type: ""
     };
 
@@ -55,6 +56,7 @@ app.controller("SignUpCtrl",
             {
               "email": $scope.user.email,
               "band": true,
+              "zip": $scope.user.zip,
               "uid": userData.uid
             });
 
@@ -96,6 +98,7 @@ app.controller("SignUpCtrl",
               {
                 "email": $scope.user.email,
                 "band": false,
+                "zip": $scope.user.zip,
                 "uid": userData.uid
               }
             );
