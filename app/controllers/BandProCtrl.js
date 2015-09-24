@@ -13,14 +13,20 @@ app.controller("BandProCtrl",
     $scope.userDetails = {};
     $scope.users = $firebaseObject(ref);
 
-    $scope.eventDetails = {
-      times: $( "#datepicker" ).value(),
-      venue: ""
-    };
 
-    $(function() {
-      $( "#datepicker" ).datepicker();
-     }); 
+    $scope.events = [[]];
+
+
+    $scope.addEvent = function(){
+      var baseRef = new Firebase("https://testcap.firebaseio.com/users");
+      var authInfo = baseRef.getAuth();
+      var fbId = authInfo.uid;
+      $scope.events[0].push($scope.newEvent);
+      var showsRef = new Firebase("https://testcap.firebaseio.com/shows/");
+      $scope.newEvent.uid = fbId;
+      showsRef.push($scope.newEvent);
+      $scope.events = $firebaseArray(showsRef);
+    };
 
 
     //Authenticates user to firebase data
@@ -69,14 +75,7 @@ app.controller("BandProCtrl",
     };
     
     $scope.message = function () {
-      var baseRef = new Firebase("https://testcap.firebaseio.com/users");
-      var authInfo = baseRef.getAuth();
-      var fbId = authInfo.uid;
-      var dataEventRef = new Firebase("https://testcap.firebaseio.com/shows/" + fbId);
-      var events = $firebaseObject(dataEventRef);
       console.log("Your profile has been saved");
-      events.show = $scope.eventDetails;
-      events.$save();
     };
    
   }

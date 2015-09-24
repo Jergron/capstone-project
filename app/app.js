@@ -1,4 +1,4 @@
-var app = angular.module("capstone", ['ngRoute', 'firebase']);
+var app = angular.module("capstone", ['ngRoute', 'ui.calendar', 'ui.date', 'firebase']);
 app.run(["$rootScope", "$location", function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
     // We can catch the error thrown when the $requireAuth promise is rejected
