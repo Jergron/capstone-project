@@ -55,9 +55,7 @@ app.controller("BandProCtrl",
        } else {
            preview.src = "";
        }
-    };
-
-    $scope.previewFile();  
+    }; 
     
   
     $scope.updateUser = function () {

@@ -1,0 +1,30 @@
+<div class="container">
+  
+  <nav ng-show="authData" class="navbar">
+
+    <div id="userDisplay">
+      <h1>FAME</h1>
+      <h4>Welcome {{userDetails.name}}</h4>
+    <a href="#/dashboard" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
+      <ul class="dropdown-menu">
+        <li role="presentation"><a href="#">Scoreboard</a></li>
+        <li role="presentation"><a href="#/fanpro">My Profile</a></li>
+        <li role="presentation"><a href="#/game">Game</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
+      </ul>
+    </a>
+    </div>
+
+  </nav>
+
+  <section>
+    <h3 style="text-align: center">Pick Out Your Band's Game</h3>
+    <div ng-repeat="user in users">
+      <a ng-click="addBand(user.uid)" class="band" ng-if="user.band === true">
+        <h4>{{user.name}}</h4>
+        <h5>{{user.name}} Game</h5>
+      </a>
+    </div>
+  </section>
+</div>
