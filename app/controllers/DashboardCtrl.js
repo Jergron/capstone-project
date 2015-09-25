@@ -27,15 +27,36 @@ app.controller("DashboardCtrl",
     // Any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-
+      // return authData;
     });
 
-     // Adds song to firebase 
-    $scope.addBand = function(user) {
-      console.log(user);
-      $scope.userDetails.bandId ={uid: user};
-
+    $scope.getFanBands = function() {
+      var matchRef = new Firebase("https://testcap.firebaseio.com/matches").orderByChild("fanId").equalTo(fbId);
+      var matchArray = $firebaseArray(matchRef);
     };
+
+    
+    $scope.addBand = function(bandId) {
+      var bandRef = new Firebase("https://testcap.firebaseio.com/users/" + bandId);
+      
+      var matchRef = new Firebase("https://testcap.firebaseio.com/matches");
+      if(bandId && fbId !== bandId && fbId){
+
+        matchRef.push({
+          bandId: bandId,
+          fanId: fbId
+        });
+      }
+
+      // $scope.userDetails.bandId ={uid: bandId};
+    };
+
+    // $scope.addFanToBand = function() {
+
+    //   console.log("authData", authData.uid);
+    //   // $scope.userDetails.fanId ={uid: user};
+
+    // };
 
   }
 ]);

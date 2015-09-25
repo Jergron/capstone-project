@@ -1,7 +1,7 @@
 var app = angular.module("capstone", ['ngRoute', 'ui.calendar', 'ui.date', 'firebase']);
 app.run(["$rootScope", "$location", function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
-    // We can catch the error thrown when the $requireAuth promise is rejected
+    // We can catch the error thrown when the $waitForAuth promise is rejected
     // and redirect the user back to the home page
     if (error === "AUTH_REQUIRED") {
       $location.path("/");
@@ -26,10 +26,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/fanprofile.html',
         controller: 'FanProCtrl',
         resolve: {
-          // controller will not be loaded until $requireAuth resolves
+          // controller will not be loaded until $waitForAuth resolves
           // Auth refers to our $firebaseAuth wrapper in the example above
           "currentAuth": ["Auth", function(Auth) {
-            // $requireAuth returns a promise so the resolve waits for it to complete
+            // $waitForAuth returns a promise so the resolve waits for it to complete
             // If the promise is rejected, it will throw a $stateChangeError (see above)
             
             return Auth.$waitForAuth();
@@ -41,10 +41,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/bandprofile.html',
         controller: 'BandProCtrl',
         resolve: {
-          // controller will not be loaded until $requireAuth resolves
+          // controller will not be loaded until $waitForAuth resolves
           // Auth refers to our $firebaseAuth wrapper in the example above
           "currentAuth": ["Auth", function(Auth) {
-            // $requireAuth returns a promise so the resolve waits for it to complete
+            // $waitForAuth returns a promise so the resolve waits for it to complete
             // If the promise is rejected, it will throw a $stateChangeError (see above)
             
             return Auth.$waitForAuth();
@@ -56,10 +56,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/dashboard.html',
         controller: 'DashboardCtrl',
         resolve: {
-          // controller will not be loaded until $requireAuth resolves
+          // controller will not be loaded until $waitForAuth resolves
           // Auth refers to our $firebaseAuth wrapper in the example above
           "currentAuth": ["Auth", function(Auth) {
-            // $requireAuth returns a promise so the resolve waits for it to complete
+            // $waitForAuth returns a promise so the resolve waits for it to complete
             // If the promise is rejected, it will throw a $stateChangeError (see above)
             
             return Auth.$waitForAuth();

@@ -67,7 +67,7 @@
     <div class=" col-sm-4 userInput">
       <p>Feedback from fans:</p>
       <div ng-repeat="user in users">
-        <p ng-if="userDetails.uid === user.bandId && users.uid === user.fanId"><strong>{{user.name}}</strong> says: {{user.feedback}}</p>
+        <p ng-if="userDetails.uid === user.bandId.uid && users.uid === user.fanId.uid"><strong>{{user.name}}</strong> says: {{user.feedback}}</p>
       </div>
 
     </div>
