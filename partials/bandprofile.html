@@ -22,22 +22,20 @@
   <div class="userUpload row">
 
     <div class=" col-sm-4 userInput">
-      Change Band Name: <input ng-model="userDetails.name" type="text" placeholder="Band Name">
+      Change Band Name: <input class="form-control input-md" ng-model="userDetails.name" type="text" placeholder="Band Name">
       <br>
-      Change E-mail: <input ng-model="userDetails.email" type="text" placeholder="E-mail">
+      Change E-mail: <input class="form-control input-md" type="text" id="email" name="email" ng-model="userDetails.email" placeholder="Email">
+      <br>
 
-
-
-      <form>
-        Change City:  <input placeholder="City" type="text" ng-model="userDetails.city"/>
-        <br>
-        Change State: <input ng-model="userDetails.state" placeholder="State" type="text">
-      </form>
+      <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.zip.$invalid && signupForm.zip.$dirty }">
+        Change Zip: <input class="form-control input-md" type="text" pattern="^\d{5}(?:[-\s]\d{4})?$" id="zip" name="zip" ng-model="userDetails.zip" placeholder="Enter Zip" required>
+        <span class="ion-at form-control-feedback"></span>
+      </div>
 
 
       <br>
       Change Profile Image: <input ng-model="userDetails.imageUrl" type="file" on-change="previewFile()"><br>
-      <img id="preview" ng-src="{{previewFile()}}" height="100" alt="Click here for preview...">
+      <img id="preview" ng-src="{{previewFile()}}" height="100" alt="Click to preview...">
     </div>
 
     <div class="col-sm-4 userMid">
@@ -48,7 +46,7 @@
 
     <div class="col-sm-4 aboutInt">
       <label>Bio</label>
-      <textarea style="width:100%" ng-model="userDetails.bio" class="bio"></textarea>
+      <textarea style="width:100%" ng-model="userDetails.bio" class="form-control input-md bio"></textarea>
      <!--  <form name="myForm">
         <input type="datetime-local" id="exampleInput" name="input" ng-model="eventDetails.value" required />
         <input ng-model="eventDetails.times" type="text" id="datepicker">
@@ -64,7 +62,7 @@
   <br>
   <div class="userUpload row">
 
-    <div class=" col-sm-4 userInput">
+    <div class="col-sm-4 userInput">
       <p>Feedback from fans:</p>
       <div ng-repeat="user in users">
         <p ng-if="userDetails.uid === user.bandId.uid && users.uid === user.fanId.uid"><strong>{{user.name}}</strong> says: {{user.feedback}}</p>
@@ -73,17 +71,10 @@
     </div>
 
     <div class="col-sm-4 userMid">
-      <table class="table">
-        <tr>
-          <td>Shows</td>
-          <td>Gear</td>
-          <td>Albums</td>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-      </table>
+      <input id="file" type="file" name="file" file> <br />
+      <!-- The elements after this will be ignored -->
+      <a class="btn btn-primary btn-md" ng-click="upload()">Upload</a>
+     
       
     </div>
 
@@ -91,9 +82,13 @@
       <label for="exampleInput">Add Event:</label>
       <div ui-calendar ng-model="events"></div>
       <form ng-submit="addEvent()">
-        <input ng-model="newEvent.title" type="text" placeholder="Title">
-        <input ui-date ui-date-format="DD, d MM, yy" ng-model="newEvent.start">
-        <input type="submit" value="Add">
+
+      <div class="calInputs">
+        <input class="form-control input-sm" ng-model="newEvent.title" type="text" placeholder="Event Title">
+        <input placeholder="Click here to enter date" class="form-control input-sm" ui-date ui-date-format="DD, d MM, yy" ng-model="newEvent.start">
+        <br>
+        <input class="button btn btn-primary" type="submit" value="Add Event">
+      </div>
       </form>
       
     </div>

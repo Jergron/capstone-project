@@ -1,5 +1,27 @@
 var app = angular.module("capstone", ['ngRoute', 'ui.calendar', 'ui.date', 'firebase']);
+
 app.run(["$rootScope", "$location", function($rootScope, $location) {
+
+  // Allows access to Amazon S3 data storage 
+  AWS.config.update( { 
+    accessKeyId: "", 
+    secretAccessKey: ""
+  });
+
+  // AWS.config.region = "us-west-2";
+
+  var s3try = new AWS.S3();
+
+  // Gets the specific object from Amazon S3 by the name of the bucket and the key inside the bucket
+  s3try.getObject({Bucket: '', Key: 'assets/iron-maiden.png'}, function(err, data) {
+    if (err) { 
+      console.log(err);
+    } else { 
+      console.log(data);
+    }
+  });
+
+  // Firebase router authentication
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
     // We can catch the error thrown when the $waitForAuth promise is rejected
     // and redirect the user back to the home page

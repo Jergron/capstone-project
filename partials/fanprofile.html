@@ -23,24 +23,19 @@
   <div class="userUpload row">
 
     <div class=" col-sm-4 userInput">
-      Change Name: <input ng-model="userDetails.name" type="text" placeholder="Name">
+      Change Name: <input class="form-control input-md" ng-model="userDetails.name" type="text" placeholder="Name">
       <br>
-      Change E-mail: <input ng-model="userDetails.email" type="text" placeholder="E-mail">
-
-
-
-      <form  novalidate method="post" name="form_citydetails" id="form_citydetails" enctype="multipart/form-data" onsubmit="return false;">
-        Change City:  <input placeholder="City" class="ff_elem" type="text" name="ff_nm_from[]" value="" id="f_elem_city" ng-model="userDetails.city"/>
-        <br>
-        Change State: <input ng-model="userDetails.state" placeholder="State" type="text" id="geobytesregion" value="">
-      </form>
-
+      Change E-mail: <input class="form-control input-md" type="text" id="email" name="email" ng-model="userDetails.email" placeholder="Email">
+      <br>
+      <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.zip.$invalid && signupForm.zip.$dirty }">
+        Change Zip: <input class="form-control input-md" type="text" pattern="^\d{5}(?:[-\s]\d{4})?$" id="zip" name="zip" ng-model="userDetails.zip" placeholder="Enter Zip" required>
+        <span class="ion-at form-control-feedback"></span>
+       </div>
 
       <br>
       Change Profile Image: <input ng-model="userDetails.imageUrl" type="file" on-change="previewFile()"><br>
       <img id="preview" ng-src="{{previewFile()}}" height="100" alt="Click here for preview...">
     </div>
-
     <div class="col-sm-4 userMid">
       <img id="profileImage" ng-src="{{authData.password.profileImageURL}}">
       <br>
@@ -51,9 +46,9 @@
 
     <div class="col-sm-4 aboutInt">
       <p>About</p>
-      <textarea ng-model="userDetails.about" class="about"></textarea>
+      <textarea ng-model="userDetails.about" class="about form-control input-md"></textarea>
       <p>Interests</p>
-      <textarea ng-model="userDetails.interests" class="interests"></textarea>
+      <textarea ng-model="userDetails.interests" class="interests form-control input-md"></textarea>
       <!-- <input type="text" placeholder="Interests"> -->
     </div>
 
@@ -63,7 +58,7 @@
 
     <div class=" col-sm-4 userInput">
       <p>Feedback:</p>
-      <textarea ng-model="userDetails.feedback" class="feedback"></textarea>
+      <textarea ng-model="userDetails.feedback" class="feedback form-control input-md"></textarea>
 
     </div>
 
@@ -83,7 +78,7 @@
     </div>
 
     <div class="col-sm-4 aboutInt" id="cal">
-      <iframe src="https://www.google.com/calendar/embed?src=jeremygrondahl%40gmail.com&ctz=America/Chicago" style="border: 2" width="500" height="300" frameborder="0" scrolling="no"></iframe>
+     <div ui-calendar ng-model="events"></div>
     </div>
 
   </div>

@@ -41,7 +41,6 @@ app.controller("DashboardCtrl",
       
       var matchRef = new Firebase("https://testcap.firebaseio.com/matches");
       if(bandId && fbId !== bandId && fbId){
-
         matchRef.push({
           bandId: bandId,
           fanId: fbId

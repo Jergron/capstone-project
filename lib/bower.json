@@ -22,7 +22,7 @@
     "firebase": "~2.2.9",
     "jquery": "~2.1.4",
     "moment": "~2.10.6",
-    "q": "~1.0.1" 
+    "q": "~1.0.1"
   },
   "homepage": "https://github.com/jergron/capstone-project"
 }
