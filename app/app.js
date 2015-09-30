@@ -13,7 +13,7 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
   var s3try = new AWS.S3();
 
   // Gets the specific object from Amazon S3 by the name of the bucket and the key inside the bucket
-  s3try.getObject({Bucket: '', Key: 'assets/iron-maiden.png'}, function(err, data) {
+  s3try.getObject({Bucket: '', Key: 'assets/'}, function(err, data) {
     if (err) { 
       console.log(err);
     } else { 
