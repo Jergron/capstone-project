@@ -4,8 +4,8 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
 
   // Allows access to Amazon S3 data storage 
   AWS.config.update( { 
-    accessKeyId: "", 
-    secretAccessKey: ""
+    accessKeyId: "AKIAJVXOQ3LLGCXVK27Q", 
+    secretAccessKey: "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"
   });
 
   // AWS.config.region = "us-west-2";
@@ -13,7 +13,7 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
   var s3try = new AWS.S3();
 
   // Gets the specific object from Amazon S3 by the name of the bucket and the key inside the bucket
-  s3try.getObject({Bucket: '', Key: 'assets/'}, function(err, data) {
+  s3try.getObject({Bucket: 'fames', Key: 'assets/'}, function(err, data) {
     if (err) { 
       console.log(err);
     } else { 
@@ -74,9 +74,39 @@ app.config(['$routeProvider',
         }
         
       })
+      .when('/create_game', {
+        templateUrl: 'partials/createGame.html',
+        controller: 'CreateGameCtrl',
+        resolve: {
+          // controller will not be loaded until $waitForAuth resolves
+          // Auth refers to our $firebaseAuth wrapper in the example above
+          "currentAuth": ["Auth", function(Auth) {
+            // $waitForAuth returns a promise so the resolve waits for it to complete
+            // If the promise is rejected, it will throw a $stateChangeError (see above)
+            
+            return Auth.$waitForAuth();
+          }]
+        }
+        
+      })
       .when('/dashboard', {
         templateUrl: 'partials/dashboard.html',
         controller: 'DashboardCtrl',
+        resolve: {
+          // controller will not be loaded until $waitForAuth resolves
+          // Auth refers to our $firebaseAuth wrapper in the example above
+          "currentAuth": ["Auth", function(Auth) {
+            // $waitForAuth returns a promise so the resolve waits for it to complete
+            // If the promise is rejected, it will throw a $stateChangeError (see above)
+            
+            return Auth.$waitForAuth();
+          }]
+        }
+        
+      })
+      .when('/game', {
+        templateUrl: 'partials/game.html',
+        controller: 'Preloader',
         resolve: {
           // controller will not be loaded until $waitForAuth resolves
           // Auth refers to our $firebaseAuth wrapper in the example above

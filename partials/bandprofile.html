@@ -9,6 +9,7 @@
         <li role="presentation"><a href="#">Scoreboard</a></li>
         <li role="presentation"><a href="#">Band Info</a></li>
         <li role="presentation"><a href="#/create_game">Create Game</a></li>
+        <li role="presentation"><a href="#/game">Game</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
       </ul>
@@ -71,12 +72,6 @@
     </div>
 
     <div class="col-sm-4 userMid">
-      <input ng-model="assets.player" id="file" type="file" name="file" file> <br />
-      <!-- The elements after this will be ignored -->
-      <a class="btn btn-primary btn-md" ng-click="upload('player')">Upload Player</a>
-      <a class="btn btn-primary btn-md" ng-click="upload('enemy')">Upload Enemy</a>
-      <a class="btn btn-primary btn-md" ng-click="upload('background')">Upload Background</a>
-     
       
     </div>
 

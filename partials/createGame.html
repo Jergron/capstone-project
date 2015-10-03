@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  
+  <nav ng-show="authData" class="navbar">
+
+      <div id="userDisplay">
+        <h4>{{userDetails.name}}</h4>
+        <h5>Make Your Game!</h5>
+      <a href="#/create_game" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
+        <ul class="dropdown-menu">
+          <li role="presentation"><a href="#">Scoreboard</a></li>
+          <li role="presentation"><a href="#/bandpro">Profile</a></li>
+          <li role="presentation"><a href="#/create_game">Create Game</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
+        </ul>
+      </a>
+      </div>
+    </nav>
+  <br>
+  <section style="text-align: center">
+    <p>Choose the file that fits the description of the button then click that button to upload the image</p>
+    <input id="file" type="file" name="file" file> <br />
+  </section>
+
+  <div class="row">
+
+      <div class="col-sm-4">
+        <label>Use a sprite or .png file</label>
+        <br>
+        <!-- The elements after this will be ignored -->
+        <a class="btn btn-primary btn-md" ng-click="upload('player')">Upload Player</a>
+      </div>
+
+   
+
+      <div class="col-sm-4">
+        <label>Use a sprite or .png file</label>
+        <br>
+        <!-- The elements after this will be ignored -->
+        <a class="btn btn-primary btn-md" ng-click="upload('enemy')">Upload Enemy</a>
+      </div>
+
+      <div class="col-sm-4"> 
+        <label>Use a .png file</label> 
+        <br>
+        <!-- The elements after this will be ignored -->
+        <a class="btn btn-primary btn-md" ng-click="upload('bullet')">Upload Bullet</a>  
+      </div>
+
+  </div>
+</div>

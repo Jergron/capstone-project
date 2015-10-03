@@ -7,11 +7,11 @@ app.controller("BandProCtrl",
   "$firebase",
   "$http",
   "currentAuth",
-  function($scope, $routeParams, $firebaseArray, $firebaseObject, Auth, $firebase, $http, currentAuth) {
+  "GetUser",
+  function($scope, $routeParams, $firebaseArray, $firebaseObject, Auth, $firebase, $http, currentAuth, GetUser) {
     var ref = new Firebase("https://testcap.firebaseio.com/users");
     var authData = ref.getAuth();
     $scope.userDetails = {};
-    $scope.assets = {};
     $scope.users = $firebaseObject(ref);
 
 
@@ -67,6 +67,8 @@ app.controller("BandProCtrl",
       var dataRef = new Firebase("https://testcap.firebaseio.com/users/" + fbId);
       var users = $firebaseObject(dataRef); 
 
+      GetUser.setUser(users);
+
       users.$bindTo($scope, "userDetails", function() {
 
       });
@@ -75,58 +77,6 @@ app.controller("BandProCtrl",
     
     $scope.message = function () {
       console.log("Your profile has been saved");
-    };
-    
-    $scope.creds = {
-      bucket: '' + authData.uid,
-      access_key: '',
-      secret_key: ''
-    };
-     
-    $scope.upload = function(role) {
-      // console.log("role", role);
-      var ref = new Firebase("https://testcap.firebaseio.com/users/" + authData.uid);
-      $scope.band = $firebaseArray(ref);
-      // Configure The S3 Object 
-      AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
-     
-      var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
-     
-      if($scope.file) { 
-        var params = { Key: $scope.file.name, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
-     
-        bucket.putObject(params, function(err, data) {
-          if(err) {
-            // There Was An Error With Your S3 Config
-            alert(err.message);
-            return false;
-          }
-          else {
-            // Success!
-            // 'https://s3.amazonaws.com/fames/' + user.id + '/' + $scope.file.name
-            console.log("role", role);
-            var toFb = {};
-            toFb[role] = 'https://s3.amazonaws.com/fames/' + authData.uid + '/' + $scope.file.name
-            ref.child("assets").update(toFb, 
-              function(error) {
-                if (error) {
-                  console.log("Error:", error);
-                } else {
-                  console.log("Profile set successfully!");
-                }
-              });
-
-          }
-        })
-        .on('httpUploadProgress',function(progress) {
-              // Log Progress Information
-              console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
-            });
-      }
-      else {
-        // No File Selected
-        alert('No File Selected');
-      }
     };
    
   }
