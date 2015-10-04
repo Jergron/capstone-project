@@ -1,4 +1,4 @@
-var app = angular.module("capstone", ['ngRoute', 'ui.calendar', 'ui.date', 'firebase']);
+var app = angular.module("capstone", ['ngRoute', 'ngMessages', 'ui.calendar', 'ui.date', 'firebase']);
 
 app.run(["$rootScope", "$location", function($rootScope, $location) {
 

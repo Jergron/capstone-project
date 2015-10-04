@@ -1,17 +1,18 @@
-.body {
-  background-image: url("https://33.media.tumblr.com/d22ed457342dd1a72b36cd0dad9da692/tumblr_nczo9vnTQr1s5xejjo1_400.gif");
-  background-repeat: repeat-x;
-  z-index: -1; }
+.text-center {
+  margin-top: 15px; }
 
+.navbar {
+  padding: 1em; }
+
+/*******************
+  SIGN-UP PAGE
+ *******************/
 form > div:nth-of-type(1) {
   float: left;
   clear: right; }
 
 form > div:nth-of-type(2) {
   float: right; }
-
-.text-center {
-  margin-top: 15px; }
 
 .panel {
   height: 100%;
@@ -22,17 +23,13 @@ form > div:nth-of-type(2) {
   padding-left: 25%;
   padding-right: 25%; }
 
-.navbar {
-  padding: 1em; }
-
-#userDisplay {
-  text-align: center; }
-
-.userMid {
-  text-align: center; }
-
-.userUpload {
-  border: 2px solid black; }
+/*******************
+ LOGIN PAGE
+*******************/
+.body {
+  background-image: url("https://33.media.tumblr.com/d22ed457342dd1a72b36cd0dad9da692/tumblr_nczo9vnTQr1s5xejjo1_400.gif");
+  background-repeat: repeat-x;
+  z-index: -1; }
 
 .loginScreen {
   margin: 15em;
@@ -45,13 +42,22 @@ form > div:nth-of-type(2) {
   -moz-box-shadow: 10px 7px 5px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 7px 5px 2px rgba(0, 0, 0, 0.75); }
 
-/*************
-  PROFILES 
- *************/
+/*******************
+  CREATE GAME PAGE
+ *******************/
+.buttons {
+  margin-top: 25px;
+  text-align: center; }
+
+.fileUpload {
+  text-align: center; }
+
+/*******************
+  PROFILES
+ *******************/
 #profileImage {
   margin: 15px;
   border-radius: 10%;
-  border: 5px dotted green;
   -webkit-box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75); }
@@ -59,6 +65,7 @@ form > div:nth-of-type(2) {
 #preview {
   margin: 15px;
   border-radius: 10%;
+  text-align: center;
   -webkit-box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 22px -1px rgba(0, 0, 0, 0.75); }
@@ -69,5 +76,20 @@ form > div:nth-of-type(2) {
 .calInputs {
   margin-top: 15px;
   text-align: center; }
+
+#cal {
+  background-color: white;
+  border: 2px solid #333346;
+  border-radius: 5px; }
+
+#userDisplay {
+  text-align: center; }
+
+.userMid {
+  text-align: center; }
+
+.userUpload {
+  border: 2px solid #333346;
+  background-color: mediumturquoise; }
 
 /*# sourceMappingURL=main.css.map */

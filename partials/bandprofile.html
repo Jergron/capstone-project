@@ -1,10 +1,7 @@
 <div class="container-fluid">
   
   <nav ng-show="authData" class="navbar">
-
-    <div id="userDisplay">
-      <h4>{{userDetails.name}}</h4>
-    <a href="#/bandpro" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
+    <a href="#/bandpro" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FAMES <span class="caret"></span>
       <ul class="dropdown-menu">
         <li role="presentation"><a href="#">Scoreboard</a></li>
         <li role="presentation"><a href="#">Band Info</a></li>
@@ -14,13 +11,12 @@
         <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
       </ul>
     </a>
-    </div>
-
-
-
   </nav>
 
   <div class="userUpload row">
+    <div id="userDisplay">
+      <h4>{{userDetails.name}}</h4>
+    </div>
 
     <div class=" col-sm-4 userInput">
       Change Band Name: <input class="form-control input-md" ng-model="userDetails.name" type="text" placeholder="Band Name">
@@ -35,8 +31,6 @@
 
 
       <br>
-      Change Profile Image: <input ng-model="userDetails.imageUrl" type="file" on-change="previewFile()"><br>
-      <img id="preview" ng-src="{{previewFile()}}" height="100" alt="Click to preview...">
     </div>
 
     <div class="col-sm-4 userMid">
@@ -48,15 +42,6 @@
     <div class="col-sm-4 aboutInt">
       <label>Bio</label>
       <textarea style="width:100%" ng-model="userDetails.bio" class="form-control input-md bio"></textarea>
-     <!--  <form name="myForm">
-        <input type="datetime-local" id="exampleInput" name="input" ng-model="eventDetails.value" required />
-        <input ng-model="eventDetails.times" type="text" id="datepicker">
-        <div role="alert">
-        </div>
-        <br>
-        <input type="text" ng-model="eventDetails.venue" placeholder="Name of the Venue">
-      </form> -->
-
     </div>
 
   </div>
@@ -75,9 +60,9 @@
       
     </div>
 
-    <div class="col-sm-4 aboutInt" id="cal">
+    <div class="col-sm-4 aboutInt">
       <label for="exampleInput">Add Event:</label>
-      <div ui-calendar ng-model="events"></div>
+      <div id="cal" ui-calendar ng-model="events"></div>
       <form ng-submit="addEvent()">
 
       <div class="calInputs">
@@ -87,8 +72,8 @@
         <input class="button btn btn-primary" type="submit" value="Add Event">
       </div>
       </form>
-      
     </div>
+      
 
   </div>
 

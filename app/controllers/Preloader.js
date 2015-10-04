@@ -3,13 +3,12 @@ app.controller("Preloader",
   "currentAuth",
   "GetUser",
   function($scope, currentAuth, GetUser) {
-
     var user = GetUser.getUser();
     var enemy;
     var player;
     var bullet;
 
-    // Sends the user back to their profile to get their firebase id
+    // Sends the user back to their profile to get firebase id
     if (user === undefined) {
       window.location = '#/bandpro';
       location.reload();

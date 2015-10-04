@@ -22,7 +22,7 @@ app.controller("CreateGameCtrl",
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
 
-      // Populates the DOM with data from firebase
+      // Calls data from firebase
       $scope.updateUser();
     });
 
@@ -64,11 +64,14 @@ app.controller("CreateGameCtrl",
       access_key: 'AKIAJVXOQ3LLGCXVK27Q',
       secret_key: '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'
     };
-     
+    
+    // Uploades the image to amazon S3 and sends the url to firebase
+    // role is the are
     $scope.upload = function(role) {
-      // console.log("role", role);
+
       var ref = new Firebase("https://testcap.firebaseio.com/users/" + authData.uid);
       $scope.band = $firebaseArray(ref);
+
       // Configure The S3 Object 
       AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
      
@@ -80,10 +83,40 @@ app.controller("CreateGameCtrl",
         bucket.putObject(params, function(err, data) {
           if(err) {
             // There Was An Error With Your S3 Config
-            alert(err.message);
+            sweetAlert(err.message);
             return false;
           }
           else {
+
+            if(role === "enemy"){
+
+              sweetAlert({   
+
+                  title: "Oh NO!",   
+                  text: "Your nemesis has arrived!",   
+                  timer: 3000 
+
+              });
+
+            } else if (role === "player") {
+
+              sweetAlert({   
+
+                  title: "SWEET!",   
+                  text: "Your player has been loaded into the matrix!",   
+                  timer: 3000 
+
+              });
+            }
+             else {
+
+              sweetAlert({   
+
+                  title: "Let's do this!",     
+                  timer: 3000 
+
+              });
+             }
             // Success!
             console.log("role", role);
             var toFb = {};
@@ -106,7 +139,7 @@ app.controller("CreateGameCtrl",
       }
       else {
         // No File Selected
-        alert('No File Selected');
+        sweetAlert('No File Selected');
       }
     };
    
