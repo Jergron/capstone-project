@@ -1,11 +1,7 @@
 <div class="container-fluid">
   
   <nav ng-show="authData" class="navbar">
-
-    <div id="userDisplay">
-      <h4>{{ authData.facebook.displayName }}{{userDetails.name}}</h4>
-      <p>Top Score: </p>
-    <a href="#/fanpro" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
+    <a href="#/fanpro" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FAMES <span class="caret"></span>
       <ul class="dropdown-menu">
         <li role="presentation"><a href="#">Scoreboard</a></li>
         <li role="presentation"><a href="#/dashboard">Dashboard</a></li>
@@ -14,13 +10,12 @@
         <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
       </ul>
     </a>
-    </div>
-
-
-
   </nav>
 
   <div class="userUpload row">
+    <div id="userDisplay">
+      <h4>{{ authData.facebook.displayName }}{{userDetails.name}}</h4>
+    </div>
 
     <div class=" col-sm-4 userInput">
       Change Name: <input class="form-control input-md" ng-model="userDetails.name" type="text" placeholder="Name">
@@ -31,17 +26,9 @@
         Change Zip: <input class="form-control input-md" type="text" pattern="^\d{5}(?:[-\s]\d{4})?$" id="zip" name="zip" ng-model="userDetails.zip" placeholder="Enter Zip" required>
         <span class="ion-at form-control-feedback"></span>
        </div>
-
-      <br>
-      Change Profile Image: <input ng-model="userDetails.imageUrl" type="file" on-change="previewFile()"><br>
-      <img id="preview" ng-src="{{previewFile()}}" height="100" alt="Click here for preview...">
     </div>
     <div class="col-sm-4 userMid">
       <img id="profileImage" ng-src="{{authData.password.profileImageURL}}">
-      <br>
-      <input type="checkbox"> Message Me
-      <br>
-      <a ng-click="updateUser(); message()" class="btn btn-default btn-sm"><strong>Update Profile</strong></a>
     </div>
 
     <div class="col-sm-4 aboutInt">
@@ -49,7 +36,6 @@
       <textarea ng-model="userDetails.about" class="about form-control input-md"></textarea>
       <p>Interests</p>
       <textarea ng-model="userDetails.interests" class="interests form-control input-md"></textarea>
-      <!-- <input type="text" placeholder="Interests"> -->
     </div>
 
   </div>
@@ -63,17 +49,6 @@
     </div>
 
     <div class="col-sm-4 userMid">
-      <table class="table">
-        <tr>
-          <td>Shows</td>
-          <td>Gear</td>
-          <td>Albums</td>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-      </table>
       
     </div>
 

@@ -10,8 +10,15 @@ app.controller("Preloader",
 
     // Sends the user back to their profile to get firebase id
     if (user === undefined) {
-      window.location = '#/bandpro';
-      location.reload();
+      if ('band' === true){
+        window.location = '#/bandpro';
+        location.reload();
+        
+      }
+      else {
+        window.location = '#/fanpro';
+        location.reload();
+      }
     }
     else {
 

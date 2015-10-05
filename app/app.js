@@ -4,8 +4,8 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
 
   // Allows access to Amazon S3 data storage 
   AWS.config.update( { 
-    accessKeyId: "AKIAJVXOQ3LLGCXVK27Q", 
-    secretAccessKey: "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"
+    accessKeyId: "", 
+    secretAccessKey: ""
   });
 
   // AWS.config.region = "us-west-2";

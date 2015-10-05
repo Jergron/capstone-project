@@ -46,8 +46,33 @@ app.controller("DashboardCtrl",
           fanId: fbId
         });
       }
+    
+      // var key = {};
+      // key[bandId] = bandId;
+      // dataRef.child("bandId").update(key, 
+      // function(error) {
+      //   if (error) {
+      //     console.log("Error:", error);
+      //   } else {
+      //     console.log("Profile set successfully!");
+      //   }
+      // });
 
       // $scope.userDetails.bandId ={uid: bandId};
+    };
+
+    $scope.addAssets = function(assets) {
+      // var bandRef = new Firebase("https://testcap.firebaseio.com/users/" + bandId);
+      
+      // var matchRef = new Firebase("https://testcap.firebaseio.com/matches");
+      // if(bandId && fbId !== bandId && fbId){
+      //   matchRef.push({
+      //     bandId: bandId,
+      //     fanId: fbId
+      //   });
+      // }
+
+      $scope.userDetails.assets = assets;
     };
 
     // $scope.addFanToBand = function() {

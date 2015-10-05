@@ -61,8 +61,8 @@ app.controller("CreateGameCtrl",
     
     $scope.creds = {
       bucket: 'fames/' + authData.uid,
-      access_key: 'AKIAJVXOQ3LLGCXVK27Q',
-      secret_key: '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'
+      access_key: '',
+      secret_key: ''
     };
     
     // Uploades the image to amazon S3 and sends the url to firebase

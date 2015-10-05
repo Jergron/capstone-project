@@ -1,11 +1,5 @@
-.text-center {
-  margin-top: 15px; }
-
-.navbar {
-  padding: 1em; }
-
 /*******************
-  SIGN-UP PAGE
+  GENERAL
  *******************/
 form > div:nth-of-type(1) {
   float: left;
@@ -14,6 +8,9 @@ form > div:nth-of-type(1) {
 form > div:nth-of-type(2) {
   float: right; }
 
+/*******************
+  SIGN-UP PAGE
+ *******************/
 .panel {
   height: 100%;
   width: 75%;
@@ -22,6 +19,9 @@ form > div:nth-of-type(2) {
 .radio {
   padding-left: 25%;
   padding-right: 25%; }
+
+.text-center {
+  margin-top: 15px; }
 
 /*******************
  LOGIN PAGE
@@ -91,5 +91,9 @@ form > div:nth-of-type(2) {
 .userUpload {
   border: 2px solid #333346;
   background-color: mediumturquoise; }
+
+/*******************
+  DASHBOARD
+ *******************/
 
 /*# sourceMappingURL=main.css.map */
