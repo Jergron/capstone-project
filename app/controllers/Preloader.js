@@ -2,29 +2,36 @@ app.controller("Preloader",
   ["$scope",
   "currentAuth",
   "GetUser",
-  function($scope, currentAuth, GetUser) {
+  "$firebase",
+  "$firebaseObject",
+  function($scope, currentAuth, GetUser, $firebase, $firebaseObject) {
+    var baseRef = new Firebase("https://testcap.firebaseio.com/users");
+    var authInfo = baseRef.getAuth();
+    var fbId = authInfo.uid;
+    var dataRef = new Firebase("https://testcap.firebaseio.com/users/" + fbId);
+    var users = $firebaseObject(dataRef); 
     var user = GetUser.getUser();
     var enemy;
     var player;
     var bullet;
-
+    var music;
+    var shoot;
+    console.log("users", users);
     // Sends the user back to their profile to get firebase id
     if (user === undefined) {
-      if ('band' === true){
-        window.location = '#/bandpro';
-        location.reload();
-        
-      }
-      else {
-        window.location = '#/fanpro';
-        location.reload();
-      }
+      
+      window.location = "#/";
+      location.reload();
+         
     }
+
     else {
 
       enemy = user.assets.enemy;
       player = user.assets.player;
       bullet = user.assets.bullet;
+      music = user.assets.music;
+      shoot = user.assets.shoot;
 
       PhaserGame.Preloader = function (game) {
 
@@ -56,10 +63,10 @@ app.controller("Preloader",
           this.load.spritesheet('explosion', 'assets/explosion192.png', 192, 192);
           this.load.image('coin', 'assets/coin64.png');
           this.load.audio('menuBackgroundMusic', 'assets/superhappycheesyloop1of2.wav');
-          this.load.audio('backgroundMusic', 'assets/superhappycheesyloop2of2.wav');
+          this.load.audio('backgroundMusic', music);
           this.load.audio('cashRegister', 'assets/cash-register.mp3');
           this.load.audio('explosion', 'assets/explosion.wav');
-          this.load.audio('shot', 'assets/gun-shot.wav');
+          this.load.audio('shot', shoot);
 
           var welcome = game.add.text(100, 100, 'coming...', {font: '30px Courier', fill: '#eeeeee'});
 

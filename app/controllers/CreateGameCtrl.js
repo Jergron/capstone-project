@@ -92,18 +92,19 @@ app.controller("CreateGameCtrl",
 
               sweetAlert({   
 
-                  title: "Oh NO!",   
+                  title: "Oh no!",   
                   text: "Your nemesis has arrived!",   
                   timer: 3000 
 
               });
 
-            } else if (role === "player") {
+            } 
+            else if (role === "player") {
 
               sweetAlert({   
 
                   title: "SWEET!",   
-                  text: "Your player has been loaded into the matrix!",   
+                  text: "Your hero has been loaded into the game!",   
                   timer: 3000 
 
               });

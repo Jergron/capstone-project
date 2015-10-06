@@ -16,10 +16,10 @@ app.controller("LogCtrl",
         // Checks e-mail/password auth and sends user to their appropriate profile
         user.$loaded( function() {
 
-          if (user.band === true) {
+          if (user.band) {
             $location.path("/bandpro");
           } 
-          else {
+          else if (user.fan) {
             $location.path("/fanpro");       
           }
 

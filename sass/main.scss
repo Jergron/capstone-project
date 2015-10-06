@@ -1,9 +1,12 @@
 /*******************
   GENERAL
  *******************/
-
+html, body {
+    height:100%;
+} 
 $border: 2px solid #333346;
 $proBorder: 5px dotted green;
+
 
 form > div:nth-of-type(1) {
   float: left;
@@ -14,6 +17,7 @@ form > div:nth-of-type(2) {
 }
 
 
+
 /*******************
   SIGN-UP PAGE
  *******************/
@@ -22,6 +26,7 @@ form > div:nth-of-type(2) {
   height: 100%;
   width: 75%;
   margin: 12.5%;
+  background-color: transparent;
 }
 
 .radio {
@@ -33,47 +38,70 @@ form > div:nth-of-type(2) {
   margin-top: 15px;
 }
 
+.wallpaper {
+  background-image: url("http://i.imgur.com/NNoFNWf.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 25%;
+}
+
 
  /*******************
   LOGIN PAGE
  *******************/
 
-.body {
-  background-image: url("https://33.media.tumblr.com/d22ed457342dd1a72b36cd0dad9da692/tumblr_nczo9vnTQr1s5xejjo1_400.gif");
-  background-repeat: repeat-x;
-  z-index: -1;
+.loginScreen h2, p{
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em; 
 }
-
 .loginScreen {
   margin: 15em;
   padding: 2em;
+  color: white;
   text-align: center;
-  border: $border;
-  border-radius: 5px;
-  background-color: white;
-  -webkit-box-shadow: 10px 7px 5px 2px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 7px 5px 2px rgba(0,0,0,0.75);
-  box-shadow: 10px 7px 5px 2px rgba(0,0,0,0.75);
 }
-
+.stage {
+  background-image: url("http://i.imgur.com/NNoFNWf.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 8%;
+}
 /*******************
   CREATE GAME PAGE
  *******************/
 
- .buttons {
-  margin-top: 25px;
-  text-align: center;
- }
+.body {
+  border: 15px solid black;
+  border-radius: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.buttons {
+margin-top: 25px;
+text-align: center;
+}
 .fileUpload {
   text-align: center;
 }
 
+.create{
+  background-image: url("http://i.imgur.com/Y4BHWJM.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  padding-bottom: 35%;
+}
 
 
 /*******************
   PROFILES
  *******************/
-
+.paper {
+  background-image: url("http://i.imgur.com/VW2DYbL.png");
+  background-size: auto 100%;
+  padding-bottom: 10%;
+  
+}
  #profileImage{
   margin: 15px;
   border-radius: 10%;
@@ -111,6 +139,8 @@ form > div:nth-of-type(2) {
 }
 
 #userDisplay {
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em; 
   text-align: center;
 }
 
@@ -119,8 +149,8 @@ form > div:nth-of-type(2) {
   
 }
 .userUpload {
-  border: $border;
-  background-color: mediumturquoise;
+  // border: $border;
+  background-color: transparent;
 
   // -webkit-box-shadow: 14px 16px 39px -3px rgba(0,0,0,0.54);
   // -moz-box-shadow: 14px 16px 39px -3px rgba(0,0,0,0.54);
@@ -131,10 +161,29 @@ form > div:nth-of-type(2) {
 /*******************
   DASHBOARD
  *******************/
+.dashboard {
+  background-image: url("http://i.imgur.com/UZKEjzG.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  padding-bottom: 34%;
+}
+.band {
+  background-color: white;
+  border: $border;
+  border-radius: 10px;
+  color: tomato;
 
+}
 
-
-
+/*******************
+  GAME
+ *******************/
+.gameWall {
+  background-image: url("http://i.imgur.com/UZKEjzG.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  padding-bottom: 35px;
+}
 
 
 

@@ -1,31 +1,33 @@
-<div class="container-fluid">
+<div class="create container-fluid">
 
-<nav ng-show="authData">
-  <ul class="nav nav-tabs">
-    <li role="presentation" class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#/create_game" role="button" aria-haspopup="true" aria-expanded="false">FAMES <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="disabled" role="presentation"><a href="#">Scoreboard</a></li>
-        <li role="presentation"><a href="#/bandpro">Profile</a></li>
-        <li role="presentation"><a href="#/create_game">Create Game</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <nav ng-show="authData">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#/create_game" role="button" aria-haspopup="true" aria-expanded="false">FAMES <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="disabled" role="presentation"><a href="#">Scoreboard</a></li>
+          <li role="presentation"><a href="#/bandpro">Profile</a></li>
+          <li role="presentation"><a href="#/create_game">Create Game</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#/"  class="btn btn-danger" ng-click="auth.$unauth()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
   <div id="userDisplay">
     <h4>{{userDetails.name}}</h4>
     <h5>Make Your Game!</h5>
   </div>
   <br>
+
   <div class="row">
     <div class="col-xs-9"></div>
     <div class="col-xs-4"></div>
+    <!-- <img class="body col-sm-4" src="https://33.media.tumblr.com/d22ed457342dd1a72b36cd0dad9da692/tumblr_nczo9vnTQr1s5xejjo1_400.gif" style="padding-left: 0px;
+    padding-right: 0px;"> -->
     <div class="col-xs-6">
-      <img ng-show="file" id="preview" ng-src="{{previewFile()}}" height="100">
     </div>
   </div>
   <section class="row fileUpload">
@@ -38,25 +40,46 @@
 
   <div class="buttons row">
 
-      <div class="col-sm-4">
-        <br>
-        <!-- The elements after this will be ignored -->
-        <a class="btn btn-success btn-md" ng-click="upload('player')">Upload Player</a>
-      </div>
+    <div class="col-sm-4">
+      <br>
+      <!-- The elements after this will be ignored -->
+      <a class="btn btn-success btn-md" ng-click="upload('player')">Upload Player</a>
+    </div>
 
-   
+    <div class="col-sm-4">
+      <br>
+      <!-- The elements after this will be ignored -->
+      <a class="btn btn-danger btn-md" ng-click="upload('enemy')">Upload Enemy</a>
+    </div>
 
-      <div class="col-sm-4">
-        <br>
-        <!-- The elements after this will be ignored -->
-        <a class="btn btn-danger btn-md" ng-click="upload('enemy')">Upload Enemy</a>
-      </div>
-
-      <div class="col-sm-4"> 
-        <br>
-        <!-- The elements after this will be ignored -->
-        <a class="btn btn-warning btn-md" ng-click="upload('bullet')">Upload Bullet</a>  
-      </div>
+    <div class="col-sm-4"> 
+      <br>
+      <!-- The elements after this will be ignored -->
+      <a class="btn btn-warning btn-md" ng-click="upload('bullet')">Upload Bullet</a>  
+    </div>
 
   </div>
+
+  <div class="buttons row">
+
+    <div class="col-sm-4">
+     
+      
+      <a class="btn btn-info btn-md" ng-click="upload('music')">Upload Music</a>
+    </div>
+
+    <div class="col-sm-4">
+      
+      <img ng-show="file" id="preview" ng-src="{{previewFile()}}">
+    </div>
+
+
+    <div class="col-sm-4">
+      <br>
+      
+      <a class="btn btn-primary btn-md" ng-click="upload('shoot')">Upload Shooting Effect</a>
+    </div>
+
+  </div>
+
 </div>
