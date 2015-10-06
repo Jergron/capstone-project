@@ -21,7 +21,7 @@
       <h3 style="text-align: center">Pick Out Your Band's Game</h3>
     <section>
       <div ng-repeat="user in users">
-        <a ng-click="addBand(user.uid); addAssets(user.assets)" ng-if="user.band === true">
+        <a ng-click="addBand(user.uid); addAssets(user.assets)" ng-if="user.band === true && user.zip === userDetails.zip">
         <br>
         <div class="band">
           <h4 style="text-align: center">{{user.name}}</h4>

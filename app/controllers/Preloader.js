@@ -62,7 +62,7 @@ app.controller("Preloader",
 
           this.load.spritesheet('explosion', 'assets/explosion192.png', 192, 192);
           this.load.image('coin', 'assets/coin64.png');
-          this.load.audio('menuBackgroundMusic', 'assets/superhappycheesyloop1of2.wav');
+          this.load.audio('menuBackgroundMusic', music);
           this.load.audio('backgroundMusic', music);
           this.load.audio('cashRegister', 'assets/cash-register.mp3');
           this.load.audio('explosion', 'assets/explosion.wav');
